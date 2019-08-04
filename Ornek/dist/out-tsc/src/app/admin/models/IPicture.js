@@ -1,1 +1,0 @@
-//# sourceMappingURL=IPicture.js.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"footer.js","sourceRoot":"","sources":["../../../../../../../../src/app/admin/views/shared/controls/footer.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAO1C,IAAa,oBAAoB,GAAjC,MAAa,oBAAoB;IAChC,QAAQ;IACR,CAAC;CACD,CAAA;AAHY,oBAAoB;IALhC,SAAS,CAAC;QACV,QAAQ,EAAE,cAAc;QACxB,WAAW,EAAE,eAAe;KAC5B,CAAC;GAEW,oBAAoB,CAGhC;SAHY,oBAAoB"}
