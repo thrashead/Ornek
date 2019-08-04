@@ -1,0 +1,51 @@
+﻿<div id="content">
+	<div id="content-header">
+		<div id="breadcrumb"> <a class="tip-bottom"><i class="icon-home"></i> Users Ekle</a></div>
+	</div>
+	<div class="container-fluid">
+		<form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+			<fieldset>
+				<div class="editor-label">
+					Username
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<input id="Username" [ngModel]="model?.Username" formControlName="Username" type="text" />
+					<br />
+					<!-- Username -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
+					Password
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<input id="Password" [ngModel]="model?.Password" formControlName="Password" type="password" />
+					<br />
+					<!-- Password -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
+					Active
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<input id="Active" [ngModel]="model?.Active" formControlName="Active" type="checkbox" />
+					<br />
+					<!-- Active -->
+				</div>
+				<div class="clear"></div>
+
+				<p>
+					<div class="alert alert-error">
+						<strong>Hata! </strong> <span class="alertMessage">{{ model?.Mesaj }}</span>
+					</div>
+
+					<input type="submit" value="Kaydet" class="btn btn-success btn-save" [disabled]="!insertForm.valid" />
+					<a routerLink="/Admin/Users" class="btn btn-danger btn-cancel">İptal</a>
+			</fieldset>
+		</form>
+	</div>
+</div>

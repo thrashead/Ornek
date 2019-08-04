@@ -1,0 +1,1 @@
+{"version":3,"file":"layout.js","sourceRoot":"","sources":["../../../../../src/app/shared/layout.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAO1C,IAAa,eAAe,GAA5B,MAAa,eAAe;IAC3B,QAAQ;IACR,CAAC;CACD,CAAA;AAHY,eAAe;IAL3B,SAAS,CAAC;QACV,QAAQ,EAAE,YAAY;QACtB,WAAW,EAAE,eAAe;KAC5B,CAAC;GAEW,eAAe,CAG3B;SAHY,eAAe"}

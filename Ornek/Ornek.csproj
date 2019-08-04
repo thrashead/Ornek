@@ -1,0 +1,578 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B57243DF-B631-43C3-AAFB-9EAE845CE663}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ornek</RootNamespace>
+    <AssemblyName>Ornek</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TDLibrary">
+      <HintPath>..\..\..\Dll\TDLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\admin\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\admin\css\bootstrap.min.css" />
+    <Content Include="Content\admin\css\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\admin\css\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Content\admin\css\main.css" />
+    <Content Include="Content\admin\css\matrix-login.css" />
+    <Content Include="Content\admin\css\matrix-media.css" />
+    <Content Include="Content\admin\css\matrix-style.css" />
+    <Content Include="Content\admin\img\active.png" />
+    <Content Include="Content\admin\img\breadcrumb.png" />
+    <Content Include="Content\admin\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\admin\img\gritter.png" />
+    <Content Include="Content\admin\img\larrow.png" />
+    <Content Include="Content\admin\img\line.png" />
+    <Content Include="Content\admin\img\loading.gif" />
+    <Content Include="Content\admin\img\logo.png" />
+    <Content Include="Content\admin\img\menu-active.png" />
+    <Content Include="Content\admin\img\passive.png" />
+    <Content Include="Content\admin\img\rarrow.png" />
+    <Content Include="Content\admin\js\bootstrap.min.js" />
+    <Content Include="Content\admin\js\ckeditor\ckeditor.js" />
+    <Content Include="Content\admin\js\ckeditor\translations\en-au.js" />
+    <Content Include="Content\admin\js\ckeditor\translations\tr.js" />
+    <Content Include="Content\admin\js\jquery.dataTables.min.js" />
+    <Content Include="Content\admin\js\main.js" />
+    <Content Include="Content\admin\js\matrix.js" />
+    <Content Include="Content\admin\js\pathscript.js" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\js\jquery\jquery.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\pathscript.js" />
+    <Content Include="Data\Ornek.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ornek.edmx</DependentUpon>
+      <LastGenOutput>Ornek.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Ornek.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Ornek.edmx</DependentUpon>
+      <LastGenOutput>Ornek.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Service\CategoryService.svc" />
+    <Content Include="Service\CategoryTService.svc" />
+    <Content Include="Service\ContentService.svc" />
+    <Content Include="Service\ContentTService.svc" />
+    <Content Include="Service\FileService.svc" />
+    <Content Include="Service\PictureService.svc" />
+    <Content Include="Service\TranslationService.svc" />
+    <Content Include="Service\UsersService.svc" />
+    <Content Include="src\app\admin\views\categoryt\index.html" />
+    <Content Include="src\app\admin\views\categoryt\insert.html" />
+    <Content Include="src\app\admin\views\categoryt\update.html" />
+    <Content Include="src\app\admin\views\category\index.html" />
+    <Content Include="src\app\admin\views\category\insert.html" />
+    <Content Include="src\app\admin\views\category\update.html" />
+    <Content Include="src\app\admin\views\contentt\index.html" />
+    <Content Include="src\app\admin\views\contentt\insert.html" />
+    <Content Include="src\app\admin\views\contentt\update.html" />
+    <Content Include="src\app\admin\views\content\index.html" />
+    <Content Include="src\app\admin\views\content\insert.html" />
+    <Content Include="src\app\admin\views\content\update.html" />
+    <Content Include="src\app\admin\views\file\index.html" />
+    <Content Include="src\app\admin\views\file\insert.html" />
+    <Content Include="src\app\admin\views\file\update.html" />
+    <Content Include="src\app\admin\views\home\index.html" />
+    <Content Include="src\app\admin\views\home\login.html" />
+    <Content Include="src\app\admin\views\picture\index.html" />
+    <Content Include="src\app\admin\views\picture\insert.html" />
+    <Content Include="src\app\admin\views\picture\update.html" />
+    <Content Include="src\app\admin\views\shared\controls\copydelete.html" />
+    <Content Include="src\app\admin\views\shared\controls\footer.html" />
+    <Content Include="src\app\admin\views\shared\controls\header.html" />
+    <Content Include="src\app\admin\views\shared\controls\leftmenu.html" />
+    <Content Include="src\app\admin\views\shared\layoutAdmin.html" />
+    <Content Include="src\app\admin\views\translation\index.html" />
+    <Content Include="src\app\admin\views\translation\insert.html" />
+    <Content Include="src\app\admin\views\translation\update.html" />
+    <Content Include="src\app\admin\views\users\index.html" />
+    <Content Include="src\app\admin\views\users\insert.html" />
+    <Content Include="src\app\admin\views\users\update.html" />
+    <Content Include="src\app\app.html" />
+    <Content Include="src\app\home\index.html" />
+    <Content Include="src\app\shared\layout.html" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="src\styles.css" />
+    <Content Include="notlar.txt" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Ajax\AjaxAreaRegistration.cs" />
+    <Compile Include="Areas\Ajax\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\CategoryTController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\ContentTController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\FileController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\PictureController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\SharedController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\TranslationController.cs" />
+    <Compile Include="Areas\Ajax\Controllers\UsersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\Ornek.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ornek.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Ornek.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Ornek.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ornek.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryParentSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelectByCode_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelectByGuid_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelectByUrl_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategorySelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryTLinkedSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryTSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryTSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryTSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryTUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryT_CategoryByLinkedIDSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryT_TranslationByLinkedIDSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_CategoryUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelectByCode_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelectByGuid_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelectByUrl_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentTLinkedSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentTSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentTSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentTSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentTUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentT_ContentByLinkedIDSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentT_TranslationByLinkedIDSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_ContentUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_FileSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_FileSelectByCode_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_FileSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_FileSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_FileUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_PictureSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_PictureSelectByCode_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_PictureSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_PictureSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_PictureUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_TranslationSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_TranslationSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_TranslationSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_TranslationUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_UsersSelectAll_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_UsersSelectLogin_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_UsersSelectTop_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_UsersSelect_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\usp_UsersUpdate_Result.cs">
+      <DependentUpon>Ornek.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CategoryT\CategoryT.cs" />
+    <Compile Include="Repository\CategoryT\ICategoryT.cs" />
+    <Compile Include="Repository\Category\Category.cs" />
+    <Compile Include="Repository\Category\ICategory.cs" />
+    <Compile Include="Repository\ContentT\ContentT.cs" />
+    <Compile Include="Repository\ContentT\IContentT.cs" />
+    <Compile Include="Repository\Content\Content.cs" />
+    <Compile Include="Repository\Content\IContent.cs" />
+    <Compile Include="Repository\File\File.cs" />
+    <Compile Include="Repository\File\IFile.cs" />
+    <Compile Include="Repository\Picture\IPicture.cs" />
+    <Compile Include="Repository\Picture\Picture.cs" />
+    <Compile Include="Repository\Translation\ITranslation.cs" />
+    <Compile Include="Repository\Translation\Translation.cs" />
+    <Compile Include="Repository\Users\IUsers.cs" />
+    <Compile Include="Repository\Users\Users.cs" />
+    <Compile Include="Service\CategoryService.svc.cs">
+      <DependentUpon>CategoryService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CategoryTService.svc.cs">
+      <DependentUpon>CategoryTService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ContentService.svc.cs">
+      <DependentUpon>ContentService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ContentTService.svc.cs">
+      <DependentUpon>ContentTService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\FileService.svc.cs">
+      <DependentUpon>FileService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICategoryService.cs" />
+    <Compile Include="Service\ICategoryTService.cs" />
+    <Compile Include="Service\IContentService.cs" />
+    <Compile Include="Service\IContentTService.cs" />
+    <Compile Include="Service\IFileService.cs" />
+    <Compile Include="Service\IPictureService.cs" />
+    <Compile Include="Service\ITranslationService.cs" />
+    <Compile Include="Service\IUsersService.cs" />
+    <Compile Include="Service\PictureService.svc.cs">
+      <DependentUpon>PictureService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TranslationService.svc.cs">
+      <DependentUpon>TranslationService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\UsersService.svc.cs">
+      <DependentUpon>UsersService.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Content\admin\css\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\admin\css\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\admin\css\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\admin\css\font-awesome\FontAwesome.otf" />
+    <Content Include="Content\admin\js\ckeditor\ckeditor.js.map" />
+    <EntityDeploy Include="Data\Ornek.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Ornek.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Ornek.edmx.diagram">
+      <DependentUpon>Ornek.edmx</DependentUpon>
+    </Content>
+    <Content Include="angular.json" />
+    <Content Include="package.json" />
+    <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Controls\_Scripts.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="src\assets\.gitkeep" />
+    <Content Include="tsconfig.app.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Ajax\Models\" />
+    <Folder Include="Areas\Ajax\Views\" />
+    <Folder Include="Content\img\" />
+    <Folder Include="src\app\models\" />
+    <Folder Include="src\app\services\" />
+    <Folder Include="Uploads\Deleted\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\admin\models\ICategory.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\ICategoryT.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\IContent.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\IContentT.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\IFile.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\IPicture.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\ITranslation.ts" />
+    <TypeScriptCompile Include="src\app\admin\models\IUsers.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\category.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\categoryt.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\content.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\contentt.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\file.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\picture.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\shared.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\translation.ts" />
+    <TypeScriptCompile Include="src\app\admin\services\users.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\categoryt\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\categoryt\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\categoryt\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\category\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\category\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\category\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\contentt\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\contentt\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\contentt\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\content\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\content\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\content\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\file\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\file\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\file\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\home\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\home\login.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\picture\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\picture\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\picture\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\controls\copydelete.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\controls\footer.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\controls\header.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\controls\leftmenu.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\controls\scripts.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\shared\layoutAdmin.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\translation\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\translation\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\translation\update.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\users\index.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\users\insert.ts" />
+    <TypeScriptCompile Include="src\app\admin\views\users\update.ts" />
+    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\app.ts" />
+    <TypeScriptCompile Include="src\app\home\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\controls\scripts.ts" />
+    <TypeScriptCompile Include="src\app\shared\layout.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55379</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Ornek</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/Ornek</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
