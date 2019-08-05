@@ -1,4 +1,5 @@
 ﻿import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'orn-layout',
@@ -6,6 +7,9 @@
 })
 
 export class LayoutComponent {
-	ngOnInit() {
+    constructor(private router: Router) {
+    }
+    ngOnInit() {
+        this.router.navigate(['/Admin/Login']);
 	}
 }
