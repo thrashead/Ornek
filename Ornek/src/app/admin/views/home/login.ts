@@ -45,7 +45,7 @@ export class AdminLoginComponent {
 		this.service.postLogin(this.loginData)
 			.subscribe((answer) => {
 				if (answer == true) {
-					this.router.navigate(['/Admin/Home']);
+					this.router.navigate(['/Admin/Index']);
 				}
 				else {
 					this.hataMesaj = "Lütfen kullanıcı adı ve şifrenizi kontrol ediniz.";

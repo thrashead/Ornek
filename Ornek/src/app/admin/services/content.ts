@@ -10,13 +10,16 @@ export class ContentService {
 	private linkUpdate: string = "Ajax/Content/Update";
 	private linkCopy: string = "Ajax/Content/Copy";
 	private linkDelete: string = "Ajax/Content/Delete";
-	private linkRemove: string = "Ajax/Content/Remove";
 
 	constructor(private http: HttpClient) {
 	}
 
 	getIndex(): Observable<Array<IContent>> {
 		return this.http.get<Array<IContent>>(this.linkIndex);
+	}
+
+	getInsert(): Observable<IContent> {
+		return this.http.get<IContent>(this.linkInsert);
 	}
 
 	postInsert(model: any): Observable<IContent> {
@@ -40,10 +43,5 @@ export class ContentService {
 	getDelete(id: string): Observable<boolean> {
 		let params = new HttpParams().set("id", id);
 		return this.http.get<boolean>(this.linkDelete, { params: params });
-	}
-
-	getRemove(id: string): Observable<boolean> {
-		let params = new HttpParams().set("id", id);
-		return this.http.get<boolean>(this.linkRemove, { params: params });
 	}
 }

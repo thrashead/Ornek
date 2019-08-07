@@ -15,25 +15,24 @@
 							<thead>
 								<tr>
 									<th>ID</th>
+									<th>Bağlı Category</th>
 									<th>Title</th>
-									<th>Code</th>
-									<th class="hideColumn">Active</th>
+									<th class="hideColumn">ShortText</th>
 									<th>İşlem</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr *ngFor="let item of ContentList">
 									<td>{{ item?.ID }}</td>
+									<td>{{ item?.CategoryAdi }}</td>
 									<td>{{ item?.Title }}</td>
-									<td>{{ item?.Code }}</td>
-									<td class="hideColumn" style="text-align:center;"><img *ngIf="item?.Active" class="active" /><img *ngIf="!item?.Active" class="passive" /></td>
+									<td class="hideColumn">{{ item?.ShortText }}</td>
 									<td style="text-align:center;">
 										<div class="btn-group" style="text-align:left;">
 											<button data-toggle="dropdown" class="btn btn-mini btn-primary dropdown-toggle">İşlem <span class="caret"></span></button>
 											<ul class="dropdown-menu">
 												<li><a class="updLink" [routerLink]="['/Admin/Content/Update/' + item?.ID]">Düzenle</a></li>
 												<li><a class="cpyLink" href="#cpyData" data-toggle="modal" [attr.data-id]="item?.ID">Kopyala</a></li>
-												<li><a class="rmvLink" href="#rmvData" data-toggle="modal" [attr.data-id]="item?.ID">Kaldır</a></li>
 												<li><a class="dltLink" href="#dltData" data-toggle="modal" [attr.data-id]="item?.ID">Sil</a></li>
 											</ul>
 										</div>

@@ -1,16 +1,15 @@
-﻿import { IContentT } from './IContentT';
-
-export interface IContent
+﻿export interface IContent
 {
 	ID : number,
+	CatID : number,
 	Title : string,
-	Url : string,
-	Code : string,
+	ShortText : string,
+	Description : string,
 	Active : boolean,
-	Deleted : boolean,
-	Guid : string,
 
 	Mesaj : string,
 
-	ContentTList : Array<IContentT>,
+	CategoryList : any[],
+
+	CategoryAdi : string,
 }

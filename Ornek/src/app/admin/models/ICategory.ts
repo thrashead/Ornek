@@ -1,18 +1,14 @@
-﻿import { ICategoryT } from './ICategoryT';
+﻿import { IContent } from './IContent';
 
 export interface ICategory
 {
 	ID : number,
-	ParentID : number,
 	Title : string,
-	Url : string,
-	Code : string,
+	ShortText : string,
+	Description : string,
 	Active : boolean,
-	Deleted : boolean,
-	Guid : string,
 
 	Mesaj : string,
 
-    CategoryTList: Array<ICategoryT>,
-    ParentCategories: any[]
+	ContentList : Array<IContent>,
 }

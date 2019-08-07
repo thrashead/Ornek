@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[Category]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[Category]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Category](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CategoryT]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[CategoryT]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -38,7 +38,7 @@ CREATE TABLE [dbo].[CategoryT](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Content]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[Content]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -57,7 +57,7 @@ CREATE TABLE [dbo].[Content](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ContentT]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[ContentT]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +77,7 @@ CREATE TABLE [dbo].[ContentT](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[File]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[File]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +96,7 @@ CREATE TABLE [dbo].[File](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Picture]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[Picture]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +106,6 @@ CREATE TABLE [dbo].[Picture](
 	[Title] [nvarchar](50) NOT NULL,
 	[Description] [nvarchar](max) NULL,
 	[PictureUrl] [nvarchar](max) NULL,
-	[ThumbUrl] [nvarchar](max) NULL,
 	[Code] [nvarchar](10) NULL,
 	[Active] [bit] NOT NULL,
 	[Deleted] [bit] NOT NULL,
@@ -116,7 +115,7 @@ CREATE TABLE [dbo].[Picture](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Translation]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[Translation]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -142,7 +141,7 @@ CREATE TABLE [dbo].[Translation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,7 +200,7 @@ REFERENCES [dbo].[Translation] ([ID])
 GO
 ALTER TABLE [dbo].[ContentT] CHECK CONSTRAINT [FK_ContentT_Translation]
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -218,7 +217,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -237,7 +236,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -259,7 +258,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryParentSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryParentSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -278,7 +277,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -296,7 +295,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -315,7 +314,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -334,7 +333,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByCode]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByCode]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -353,7 +352,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByGuid]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByGuid]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -372,7 +371,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByUrl]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelectByUrl]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -391,7 +390,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategorySelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategorySelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -411,7 +410,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryT_CategoryByLinkedIDSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryT_CategoryByLinkedIDSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -431,7 +430,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryT_TranslationByLinkedIDSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryT_TranslationByLinkedIDSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -451,7 +450,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -468,7 +467,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -487,7 +486,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -509,7 +508,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTLinkedSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTLinkedSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -530,7 +529,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -548,7 +547,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -567,7 +566,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -586,7 +585,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -606,7 +605,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryTUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryTUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -635,7 +634,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CategoryUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_CategoryUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -663,7 +662,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -680,7 +679,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -699,7 +698,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -720,7 +719,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -738,7 +737,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -757,7 +756,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -776,7 +775,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByCode]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByCode]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -795,7 +794,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByGuid]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByGuid]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -814,7 +813,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByUrl]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelectByUrl]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -833,7 +832,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -853,7 +852,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentT_ContentByLinkedIDSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentT_ContentByLinkedIDSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -873,7 +872,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentT_TranslationByLinkedIDSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentT_TranslationByLinkedIDSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -893,7 +892,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -910,7 +909,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -929,7 +928,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -951,7 +950,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTLinkedSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTLinkedSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -972,7 +971,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -990,7 +989,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1009,7 +1008,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1028,7 +1027,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1048,7 +1047,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentTUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentTUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1077,7 +1076,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_ContentUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_ContentUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1104,7 +1103,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1121,7 +1120,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1140,7 +1139,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1161,7 +1160,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1179,7 +1178,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1198,7 +1197,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1217,7 +1216,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileSelectByCode]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileSelectByCode]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1236,7 +1235,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1256,7 +1255,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_FileUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_FileUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1284,7 +1283,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1295,13 +1294,13 @@ AS
 BEGIN
 	SET NOCOUNT ON
 
-	INSERT INTO [dbo].[Picture] ([Title],[Description],[PictureUrl],[ThumbUrl],[Code],[Active],[Deleted])
-	SELECT A.[Title] + ' (Kopya)', A.[Description], 'Kopya_' + A.[PictureUrl], 'Kopya_' + A.[ThumbUrl], A.[Code], A.[Active], A.[Deleted] FROM [dbo].[Picture] A WHERE A.[ID] = @ID
+	INSERT INTO [dbo].[Picture] ([Title],[Description],[PictureUrl],[Code],[Active],[Deleted])
+	SELECT A.[Title] + ' (Kopya)', A.[Description], 'Kopya_' + A.[PictureUrl], A.[Code], A.[Active], A.[Deleted] FROM [dbo].[Picture] A WHERE A.[ID] = @ID
 
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1320,7 +1319,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1329,20 +1328,19 @@ CREATE PROC [dbo].[usp_PictureInsert]
 	@Title nvarchar(50),
 	@Description nvarchar(MAX) = NULL,
 	@PictureUrl nvarchar(MAX) = NULL,
-	@ThumbUrl nvarchar(MAX) = NULL,
 	@Code nvarchar(10) = NULL,
 	@Active bit
 AS
 BEGIN
 	SET NOCOUNT ON
 
-	INSERT INTO [dbo].[Picture] ([Title],[Description],[PictureUrl],[ThumbUrl],[Code],[Active],[Deleted])
-	SELECT @Title, @Description, @PictureUrl, @ThumbUrl, @Code, @Active, 0
+	INSERT INTO [dbo].[Picture] ([Title],[Description],[PictureUrl],[Code],[Active],[Deleted])
+	SELECT @Title, @Description, @PictureUrl, @Code, @Active, 0
 
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1360,7 +1358,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1373,13 +1371,13 @@ AS
 
 	BEGIN TRAN
 
-	SELECT [ID], [Title], [Description], [PictureUrl], [ThumbUrl], [Code], [Active]
+	SELECT [ID], [Title], [Description], [PictureUrl], [Code], [Active]
 	FROM [dbo].[Picture]
 	WHERE ([ID] = @ID OR @ID IS NULL) and [Deleted] = 0
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1392,13 +1390,13 @@ AS
 
 	BEGIN TRAN
 
-	SELECT [ID], [Title], [Description], [PictureUrl], [ThumbUrl], [Code], [Active], [Deleted]
+	SELECT [ID], [Title], [Description], [PictureUrl], [Code], [Active], [Deleted]
 	FROM [dbo].[Picture]
 	WHERE ([ID] = @ID OR @ID IS NULL)
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureSelectByCode]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureSelectByCode]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1411,13 +1409,13 @@ AS
 
 	BEGIN TRAN
 
-	SELECT [ID], [Title], [Description], [PictureUrl], [ThumbUrl], [Code], [Active]
+	SELECT [ID], [Title], [Description], [PictureUrl], [Code], [Active]
 	FROM [dbo].[Picture]
 	WHERE ([Code] = @Code OR @Code IS NULL) and [Deleted] = 0
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1431,13 +1429,13 @@ AS
 
 	BEGIN TRAN
 
-	SELECT Top (@Top) [ID], [Title], [Description], [PictureUrl], [ThumbUrl], [Code], [Active]
+	SELECT Top (@Top) [ID], [Title], [Description], [PictureUrl], [Code], [Active]
 	FROM [dbo].[Picture]
 	WHERE ([ID] = @ID OR @ID IS NULL) and [Deleted] = 0
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_PictureUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_PictureUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1447,7 +1445,6 @@ CREATE PROC [dbo].[usp_PictureUpdate]
 	@Title nvarchar(50),
 	@Description nvarchar(MAX) = NULL,
 	@PictureUrl nvarchar(MAX) = NULL,
-	@ThumbUrl nvarchar(MAX) = NULL,
 	@Code nvarchar(10) = NULL,
 	@Active bit
 AS
@@ -1457,16 +1454,16 @@ AS
 	BEGIN TRAN
 
 	UPDATE [dbo].[Picture]
-	SET [Title] = @Title,[Description] = @Description,[PictureUrl] = @PictureUrl,[ThumbUrl] = @ThumbUrl,[Code] = @Code,[Active] = @Active
+	SET [Title] = @Title,[Description] = @Description,[PictureUrl] = @PictureUrl,[Code] = @Code,[Active] = @Active
 	WHERE [ID] = @ID
 
-	SELECT [ID], [Title], [Description], [PictureUrl], [ThumbUrl], [Code], [Active]
+	SELECT [ID], [Title], [Description], [PictureUrl], [Code], [Active]
 	FROM [dbo].[Picture]
 	WHERE [ID] = @ID
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1483,7 +1480,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1502,7 +1499,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1522,7 +1519,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1540,7 +1537,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1559,7 +1556,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1578,7 +1575,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1598,7 +1595,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_TranslationUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_TranslationUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1625,7 +1622,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersCopy]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersCopy]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1642,7 +1639,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersDelete]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersDelete]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1661,7 +1658,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersInsert]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersInsert]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1680,7 +1677,7 @@ BEGIN
 	SELECT cast(@@IDENTITY as int)
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersOldPasswordSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersOldPasswordSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1699,7 +1696,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersRemove]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersRemove]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1717,7 +1714,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersSelect]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersSelect]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1736,7 +1733,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersSelectAll]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersSelectAll]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1755,7 +1752,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersSelectLogin]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersSelectLogin]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1778,7 +1775,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersSelectTop]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersSelectTop]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1798,7 +1795,7 @@ AS
 
 	COMMIT
 GO
-/****** Object:  StoredProcedure [dbo].[usp_UsersUpdate]    Script Date: 5.08.2019 08:18:44 ******/
+/****** Object:  StoredProcedure [dbo].[usp_UsersUpdate]    Script Date: 5.08.2019 10:52:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

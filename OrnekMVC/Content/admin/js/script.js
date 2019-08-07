@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    if ($("#Description").length > 0 && Urling.controller != "File" && Urling.controller != "Picture") {
+	if ($("#Description").length > 0) {
 		ClassicEditor
 			.create(document.querySelector('#Description'), {
 			})
@@ -130,26 +130,8 @@ function KelimeAra(txtValue) {
 		case "Category":
 			window.location.href = AdminPath + "/Category";
 			break;
-		case "CategoryT":
-			window.location.href = AdminPath + "/CategoryT";
-			break;
 		case "Content":
 			window.location.href = AdminPath + "/Content";
-			break;
-		case "ContentT":
-			window.location.href = AdminPath + "/ContentT";
-			break;
-		case "File":
-			window.location.href = AdminPath + "/File";
-			break;
-		case "Picture":
-			window.location.href = AdminPath + "/Picture";
-			break;
-		case "Translation":
-			window.location.href = AdminPath + "/Translation";
-			break;
-		case "Users":
-			window.location.href = AdminPath + "/Users";
 			break;
 		default:
 			$.gritter.add({
@@ -167,13 +149,7 @@ $(function () {
 		$('#search input[type=text]').typeahead({
 			source: [
 				'Category',
-				'CategoryT',
 				'Content',
-				'ContentT',
-				'File',
-				'Picture',
-				'Translation',
-				'Users',
 			],
 			items: 4
 		});

@@ -4,7 +4,7 @@
 	templateUrl: './index.html'
 })
 
-export class AdminHomeComponent {
+export class AdminIndexComponent {
 	ngOnInit() {
 	}
 }

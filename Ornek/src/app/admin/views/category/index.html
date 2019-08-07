@@ -15,25 +15,24 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>ParentID</th>
 									<th>Title</th>
-									<th class="hideColumn">Code</th>
+									<th>ShortText</th>
+									<th class="hideColumn">Description</th>
 									<th>İşlem</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr *ngFor="let item of CategoryList">
 									<td>{{ item?.ID }}</td>
-									<td>{{ item?.ParentID }}</td>
 									<td>{{ item?.Title }}</td>
-									<td class="hideColumn">{{ item?.Code }}</td>
+									<td>{{ item?.ShortText }}</td>
+									<td class="hideColumn">{{ item?.Description }}</td>
 									<td style="text-align:center;">
 										<div class="btn-group" style="text-align:left;">
 											<button data-toggle="dropdown" class="btn btn-mini btn-primary dropdown-toggle">İşlem <span class="caret"></span></button>
 											<ul class="dropdown-menu">
 												<li><a class="updLink" [routerLink]="['/Admin/Category/Update/' + item?.ID]">Düzenle</a></li>
 												<li><a class="cpyLink" href="#cpyData" data-toggle="modal" [attr.data-id]="item?.ID">Kopyala</a></li>
-												<li><a class="rmvLink" href="#rmvData" data-toggle="modal" [attr.data-id]="item?.ID">Kaldır</a></li>
 												<li><a class="dltLink" href="#dltData" data-toggle="modal" [attr.data-id]="item?.ID">Sil</a></li>
 											</ul>
 										</div>

@@ -46,51 +46,25 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CategoryDelete", iDParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> usp_CategoryInsert(Nullable<int> parentID, string title, string url, string code, Nullable<bool> active, string guid)
+        public virtual ObjectResult<Nullable<int>> usp_CategoryInsert(string title, string shortText, string description, Nullable<bool> active)
         {
-            var parentIDParameter = parentID.HasValue ?
-                new ObjectParameter("ParentID", parentID) :
-                new ObjectParameter("ParentID", typeof(int));
-    
             var titleParameter = title != null ?
                 new ObjectParameter("Title", title) :
                 new ObjectParameter("Title", typeof(string));
     
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
+            var shortTextParameter = shortText != null ?
+                new ObjectParameter("ShortText", shortText) :
+                new ObjectParameter("ShortText", typeof(string));
     
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var activeParameter = active.HasValue ?
                 new ObjectParameter("Active", active) :
                 new ObjectParameter("Active", typeof(bool));
     
-            var guidParameter = guid != null ?
-                new ObjectParameter("Guid", guid) :
-                new ObjectParameter("Guid", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_CategoryInsert", parentIDParameter, titleParameter, urlParameter, codeParameter, activeParameter, guidParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryParentSelect_Result> usp_CategoryParentSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryParentSelect_Result>("usp_CategoryParentSelect", iDParameter);
-        }
-    
-        public virtual int usp_CategoryRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CategoryRemove", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_CategoryInsert", titleParameter, shortTextParameter, descriptionParameter, activeParameter);
         }
     
         public virtual ObjectResult<usp_CategorySelect_Result> usp_CategorySelect(Nullable<int> iD)
@@ -111,33 +85,6 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategorySelectAll_Result>("usp_CategorySelectAll", iDParameter);
         }
     
-        public virtual ObjectResult<usp_CategorySelectByCode_Result> usp_CategorySelectByCode(string code)
-        {
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategorySelectByCode_Result>("usp_CategorySelectByCode", codeParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategorySelectByGuid_Result> usp_CategorySelectByGuid(string guid)
-        {
-            var guidParameter = guid != null ?
-                new ObjectParameter("Guid", guid) :
-                new ObjectParameter("Guid", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategorySelectByGuid_Result>("usp_CategorySelectByGuid", guidParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategorySelectByUrl_Result> usp_CategorySelectByUrl(string url)
-        {
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategorySelectByUrl_Result>("usp_CategorySelectByUrl", urlParameter);
-        }
-    
         public virtual ObjectResult<usp_CategorySelectTop_Result> usp_CategorySelectTop(Nullable<int> iD, Nullable<int> top)
         {
             var iDParameter = iD.HasValue ?
@@ -151,180 +98,38 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategorySelectTop_Result>("usp_CategorySelectTop", iDParameter, topParameter);
         }
     
-        public virtual ObjectResult<usp_CategoryT_CategoryByLinkedIDSelect_Result> usp_CategoryT_CategoryByLinkedIDSelect(Nullable<int> catID)
-        {
-            var catIDParameter = catID.HasValue ?
-                new ObjectParameter("CatID", catID) :
-                new ObjectParameter("CatID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryT_CategoryByLinkedIDSelect_Result>("usp_CategoryT_CategoryByLinkedIDSelect", catIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryT_TranslationByLinkedIDSelect_Result> usp_CategoryT_TranslationByLinkedIDSelect(Nullable<int> transID)
-        {
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryT_TranslationByLinkedIDSelect_Result>("usp_CategoryT_TranslationByLinkedIDSelect", transIDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_CategoryTCopy(Nullable<int> iD)
+        public virtual ObjectResult<usp_CategoryUpdate_Result> usp_CategoryUpdate(Nullable<int> iD, string title, string shortText, string description, Nullable<bool> active)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_CategoryTCopy", iDParameter);
-        }
-    
-        public virtual int usp_CategoryTDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CategoryTDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_CategoryTInsert(Nullable<int> catID, Nullable<int> transID, string categoryName, string shortText1, string shortText2, string description)
-        {
-            var catIDParameter = catID.HasValue ?
-                new ObjectParameter("CatID", catID) :
-                new ObjectParameter("CatID", typeof(int));
-    
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            var categoryNameParameter = categoryName != null ?
-                new ObjectParameter("CategoryName", categoryName) :
-                new ObjectParameter("CategoryName", typeof(string));
-    
-            var shortText1Parameter = shortText1 != null ?
-                new ObjectParameter("ShortText1", shortText1) :
-                new ObjectParameter("ShortText1", typeof(string));
-    
-            var shortText2Parameter = shortText2 != null ?
-                new ObjectParameter("ShortText2", shortText2) :
-                new ObjectParameter("ShortText2", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_CategoryTInsert", catIDParameter, transIDParameter, categoryNameParameter, shortText1Parameter, shortText2Parameter, descriptionParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryTLinkedSelect_Result> usp_CategoryTLinkedSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryTLinkedSelect_Result>("usp_CategoryTLinkedSelect", iDParameter);
-        }
-    
-        public virtual int usp_CategoryTRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CategoryTRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryTSelect_Result> usp_CategoryTSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryTSelect_Result>("usp_CategoryTSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryTSelectAll_Result> usp_CategoryTSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryTSelectAll_Result>("usp_CategoryTSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryTSelectTop_Result> usp_CategoryTSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryTSelectTop_Result>("usp_CategoryTSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryTUpdate_Result> usp_CategoryTUpdate(Nullable<int> iD, Nullable<int> catID, Nullable<int> transID, string categoryName, string shortText1, string shortText2, string description)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var catIDParameter = catID.HasValue ?
-                new ObjectParameter("CatID", catID) :
-                new ObjectParameter("CatID", typeof(int));
-    
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            var categoryNameParameter = categoryName != null ?
-                new ObjectParameter("CategoryName", categoryName) :
-                new ObjectParameter("CategoryName", typeof(string));
-    
-            var shortText1Parameter = shortText1 != null ?
-                new ObjectParameter("ShortText1", shortText1) :
-                new ObjectParameter("ShortText1", typeof(string));
-    
-            var shortText2Parameter = shortText2 != null ?
-                new ObjectParameter("ShortText2", shortText2) :
-                new ObjectParameter("ShortText2", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryTUpdate_Result>("usp_CategoryTUpdate", iDParameter, catIDParameter, transIDParameter, categoryNameParameter, shortText1Parameter, shortText2Parameter, descriptionParameter);
-        }
-    
-        public virtual ObjectResult<usp_CategoryUpdate_Result> usp_CategoryUpdate(Nullable<int> iD, Nullable<int> parentID, string title, string url, string code, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var parentIDParameter = parentID.HasValue ?
-                new ObjectParameter("ParentID", parentID) :
-                new ObjectParameter("ParentID", typeof(int));
     
             var titleParameter = title != null ?
                 new ObjectParameter("Title", title) :
                 new ObjectParameter("Title", typeof(string));
     
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
+            var shortTextParameter = shortText != null ?
+                new ObjectParameter("ShortText", shortText) :
+                new ObjectParameter("ShortText", typeof(string));
     
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var activeParameter = active.HasValue ?
                 new ObjectParameter("Active", active) :
                 new ObjectParameter("Active", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryUpdate_Result>("usp_CategoryUpdate", iDParameter, parentIDParameter, titleParameter, urlParameter, codeParameter, activeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CategoryUpdate_Result>("usp_CategoryUpdate", iDParameter, titleParameter, shortTextParameter, descriptionParameter, activeParameter);
+        }
+    
+        public virtual ObjectResult<usp_Content_CategoryByLinkedIDSelect_Result> usp_Content_CategoryByLinkedIDSelect(Nullable<int> catID)
+        {
+            var catIDParameter = catID.HasValue ?
+                new ObjectParameter("CatID", catID) :
+                new ObjectParameter("CatID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_Content_CategoryByLinkedIDSelect_Result>("usp_Content_CategoryByLinkedIDSelect", catIDParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> usp_ContentCopy(Nullable<int> iD)
@@ -345,38 +150,38 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ContentDelete", iDParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> usp_ContentInsert(string title, string url, string code, Nullable<bool> active, string guid)
+        public virtual ObjectResult<Nullable<int>> usp_ContentInsert(Nullable<int> catID, string title, string shortText, string description, Nullable<bool> active)
         {
+            var catIDParameter = catID.HasValue ?
+                new ObjectParameter("CatID", catID) :
+                new ObjectParameter("CatID", typeof(int));
+    
             var titleParameter = title != null ?
                 new ObjectParameter("Title", title) :
                 new ObjectParameter("Title", typeof(string));
     
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
+            var shortTextParameter = shortText != null ?
+                new ObjectParameter("ShortText", shortText) :
+                new ObjectParameter("ShortText", typeof(string));
     
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var activeParameter = active.HasValue ?
                 new ObjectParameter("Active", active) :
                 new ObjectParameter("Active", typeof(bool));
     
-            var guidParameter = guid != null ?
-                new ObjectParameter("Guid", guid) :
-                new ObjectParameter("Guid", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_ContentInsert", titleParameter, urlParameter, codeParameter, activeParameter, guidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_ContentInsert", catIDParameter, titleParameter, shortTextParameter, descriptionParameter, activeParameter);
         }
     
-        public virtual int usp_ContentRemove(Nullable<int> iD)
+        public virtual ObjectResult<usp_ContentLinkedSelect_Result> usp_ContentLinkedSelect(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ContentRemove", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentLinkedSelect_Result>("usp_ContentLinkedSelect", iDParameter);
         }
     
         public virtual ObjectResult<usp_ContentSelect_Result> usp_ContentSelect(Nullable<int> iD)
@@ -397,33 +202,6 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentSelectAll_Result>("usp_ContentSelectAll", iDParameter);
         }
     
-        public virtual ObjectResult<usp_ContentSelectByCode_Result> usp_ContentSelectByCode(string code)
-        {
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentSelectByCode_Result>("usp_ContentSelectByCode", codeParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentSelectByGuid_Result> usp_ContentSelectByGuid(string guid)
-        {
-            var guidParameter = guid != null ?
-                new ObjectParameter("Guid", guid) :
-                new ObjectParameter("Guid", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentSelectByGuid_Result>("usp_ContentSelectByGuid", guidParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentSelectByUrl_Result> usp_ContentSelectByUrl(string url)
-        {
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentSelectByUrl_Result>("usp_ContentSelectByUrl", urlParameter);
-        }
-    
         public virtual ObjectResult<usp_ContentSelectTop_Result> usp_ContentSelectTop(Nullable<int> iD, Nullable<int> top)
         {
             var iDParameter = iD.HasValue ?
@@ -437,640 +215,33 @@ namespace OrnekMVC.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentSelectTop_Result>("usp_ContentSelectTop", iDParameter, topParameter);
         }
     
-        public virtual ObjectResult<usp_ContentT_ContentByLinkedIDSelect_Result> usp_ContentT_ContentByLinkedIDSelect(Nullable<int> contID)
-        {
-            var contIDParameter = contID.HasValue ?
-                new ObjectParameter("ContID", contID) :
-                new ObjectParameter("ContID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentT_ContentByLinkedIDSelect_Result>("usp_ContentT_ContentByLinkedIDSelect", contIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentT_TranslationByLinkedIDSelect_Result> usp_ContentT_TranslationByLinkedIDSelect(Nullable<int> transID)
-        {
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentT_TranslationByLinkedIDSelect_Result>("usp_ContentT_TranslationByLinkedIDSelect", transIDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_ContentTCopy(Nullable<int> iD)
+        public virtual ObjectResult<usp_ContentUpdate_Result> usp_ContentUpdate(Nullable<int> iD, Nullable<int> catID, string title, string shortText, string description, Nullable<bool> active)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_ContentTCopy", iDParameter);
-        }
-    
-        public virtual int usp_ContentTDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ContentTDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_ContentTInsert(Nullable<int> contID, Nullable<int> transID, string contentName, string shortText1, string shortText2, string description)
-        {
-            var contIDParameter = contID.HasValue ?
-                new ObjectParameter("ContID", contID) :
-                new ObjectParameter("ContID", typeof(int));
-    
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            var contentNameParameter = contentName != null ?
-                new ObjectParameter("ContentName", contentName) :
-                new ObjectParameter("ContentName", typeof(string));
-    
-            var shortText1Parameter = shortText1 != null ?
-                new ObjectParameter("ShortText1", shortText1) :
-                new ObjectParameter("ShortText1", typeof(string));
-    
-            var shortText2Parameter = shortText2 != null ?
-                new ObjectParameter("ShortText2", shortText2) :
-                new ObjectParameter("ShortText2", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_ContentTInsert", contIDParameter, transIDParameter, contentNameParameter, shortText1Parameter, shortText2Parameter, descriptionParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentTLinkedSelect_Result> usp_ContentTLinkedSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentTLinkedSelect_Result>("usp_ContentTLinkedSelect", iDParameter);
-        }
-    
-        public virtual int usp_ContentTRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ContentTRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentTSelect_Result> usp_ContentTSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentTSelect_Result>("usp_ContentTSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentTSelectAll_Result> usp_ContentTSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentTSelectAll_Result>("usp_ContentTSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentTSelectTop_Result> usp_ContentTSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentTSelectTop_Result>("usp_ContentTSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentTUpdate_Result> usp_ContentTUpdate(Nullable<int> iD, Nullable<int> contID, Nullable<int> transID, string contentName, string shortText1, string shortText2, string description)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var contIDParameter = contID.HasValue ?
-                new ObjectParameter("ContID", contID) :
-                new ObjectParameter("ContID", typeof(int));
-    
-            var transIDParameter = transID.HasValue ?
-                new ObjectParameter("TransID", transID) :
-                new ObjectParameter("TransID", typeof(int));
-    
-            var contentNameParameter = contentName != null ?
-                new ObjectParameter("ContentName", contentName) :
-                new ObjectParameter("ContentName", typeof(string));
-    
-            var shortText1Parameter = shortText1 != null ?
-                new ObjectParameter("ShortText1", shortText1) :
-                new ObjectParameter("ShortText1", typeof(string));
-    
-            var shortText2Parameter = shortText2 != null ?
-                new ObjectParameter("ShortText2", shortText2) :
-                new ObjectParameter("ShortText2", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentTUpdate_Result>("usp_ContentTUpdate", iDParameter, contIDParameter, transIDParameter, contentNameParameter, shortText1Parameter, shortText2Parameter, descriptionParameter);
-        }
-    
-        public virtual ObjectResult<usp_ContentUpdate_Result> usp_ContentUpdate(Nullable<int> iD, string title, string url, string code, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
+            var catIDParameter = catID.HasValue ?
+                new ObjectParameter("CatID", catID) :
+                new ObjectParameter("CatID", typeof(int));
     
             var titleParameter = title != null ?
                 new ObjectParameter("Title", title) :
                 new ObjectParameter("Title", typeof(string));
     
-            var urlParameter = url != null ?
-                new ObjectParameter("Url", url) :
-                new ObjectParameter("Url", typeof(string));
-    
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentUpdate_Result>("usp_ContentUpdate", iDParameter, titleParameter, urlParameter, codeParameter, activeParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_FileCopy(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_FileCopy", iDParameter);
-        }
-    
-        public virtual int usp_FileDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_FileDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_FileInsert(string title, string description, string fileUrl, string code, Nullable<bool> active)
-        {
-            var titleParameter = title != null ?
-                new ObjectParameter("Title", title) :
-                new ObjectParameter("Title", typeof(string));
+            var shortTextParameter = shortText != null ?
+                new ObjectParameter("ShortText", shortText) :
+                new ObjectParameter("ShortText", typeof(string));
     
             var descriptionParameter = description != null ?
                 new ObjectParameter("Description", description) :
                 new ObjectParameter("Description", typeof(string));
     
-            var fileUrlParameter = fileUrl != null ?
-                new ObjectParameter("FileUrl", fileUrl) :
-                new ObjectParameter("FileUrl", typeof(string));
-    
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
             var activeParameter = active.HasValue ?
                 new ObjectParameter("Active", active) :
                 new ObjectParameter("Active", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_FileInsert", titleParameter, descriptionParameter, fileUrlParameter, codeParameter, activeParameter);
-        }
-    
-        public virtual int usp_FileRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_FileRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_FileSelect_Result> usp_FileSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FileSelect_Result>("usp_FileSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_FileSelectAll_Result> usp_FileSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FileSelectAll_Result>("usp_FileSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_FileSelectByCode_Result> usp_FileSelectByCode(string code)
-        {
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FileSelectByCode_Result>("usp_FileSelectByCode", codeParameter);
-        }
-    
-        public virtual ObjectResult<usp_FileSelectTop_Result> usp_FileSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FileSelectTop_Result>("usp_FileSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_FileUpdate_Result> usp_FileUpdate(Nullable<int> iD, string title, string description, string fileUrl, string code, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var titleParameter = title != null ?
-                new ObjectParameter("Title", title) :
-                new ObjectParameter("Title", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            var fileUrlParameter = fileUrl != null ?
-                new ObjectParameter("FileUrl", fileUrl) :
-                new ObjectParameter("FileUrl", typeof(string));
-    
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FileUpdate_Result>("usp_FileUpdate", iDParameter, titleParameter, descriptionParameter, fileUrlParameter, codeParameter, activeParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_PictureCopy(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_PictureCopy", iDParameter);
-        }
-    
-        public virtual int usp_PictureDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_PictureDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_PictureInsert(string title, string description, string pictureUrl, string code, Nullable<bool> active)
-        {
-            var titleParameter = title != null ?
-                new ObjectParameter("Title", title) :
-                new ObjectParameter("Title", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            var pictureUrlParameter = pictureUrl != null ?
-                new ObjectParameter("PictureUrl", pictureUrl) :
-                new ObjectParameter("PictureUrl", typeof(string));
-    
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_PictureInsert", titleParameter, descriptionParameter, pictureUrlParameter, codeParameter, activeParameter);
-        }
-    
-        public virtual int usp_PictureRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_PictureRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_PictureSelect_Result> usp_PictureSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PictureSelect_Result>("usp_PictureSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_PictureSelectAll_Result> usp_PictureSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PictureSelectAll_Result>("usp_PictureSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_PictureSelectByCode_Result> usp_PictureSelectByCode(string code)
-        {
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PictureSelectByCode_Result>("usp_PictureSelectByCode", codeParameter);
-        }
-    
-        public virtual ObjectResult<usp_PictureSelectTop_Result> usp_PictureSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PictureSelectTop_Result>("usp_PictureSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_PictureUpdate_Result> usp_PictureUpdate(Nullable<int> iD, string title, string description, string pictureUrl, string code, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var titleParameter = title != null ?
-                new ObjectParameter("Title", title) :
-                new ObjectParameter("Title", typeof(string));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
-            var pictureUrlParameter = pictureUrl != null ?
-                new ObjectParameter("PictureUrl", pictureUrl) :
-                new ObjectParameter("PictureUrl", typeof(string));
-    
-            var codeParameter = code != null ?
-                new ObjectParameter("Code", code) :
-                new ObjectParameter("Code", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PictureUpdate_Result>("usp_PictureUpdate", iDParameter, titleParameter, descriptionParameter, pictureUrlParameter, codeParameter, activeParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_TranslationCopy(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_TranslationCopy", iDParameter);
-        }
-    
-        public virtual int usp_TranslationDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_TranslationDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_TranslationInsert(string transName, string shortName, string flag, Nullable<bool> active)
-        {
-            var transNameParameter = transName != null ?
-                new ObjectParameter("TransName", transName) :
-                new ObjectParameter("TransName", typeof(string));
-    
-            var shortNameParameter = shortName != null ?
-                new ObjectParameter("ShortName", shortName) :
-                new ObjectParameter("ShortName", typeof(string));
-    
-            var flagParameter = flag != null ?
-                new ObjectParameter("Flag", flag) :
-                new ObjectParameter("Flag", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_TranslationInsert", transNameParameter, shortNameParameter, flagParameter, activeParameter);
-        }
-    
-        public virtual int usp_TranslationRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_TranslationRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_TranslationSelect_Result> usp_TranslationSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TranslationSelect_Result>("usp_TranslationSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_TranslationSelectAll_Result> usp_TranslationSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TranslationSelectAll_Result>("usp_TranslationSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_TranslationSelectTop_Result> usp_TranslationSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TranslationSelectTop_Result>("usp_TranslationSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_TranslationUpdate_Result> usp_TranslationUpdate(Nullable<int> iD, string transName, string shortName, string flag, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var transNameParameter = transName != null ?
-                new ObjectParameter("TransName", transName) :
-                new ObjectParameter("TransName", typeof(string));
-    
-            var shortNameParameter = shortName != null ?
-                new ObjectParameter("ShortName", shortName) :
-                new ObjectParameter("ShortName", typeof(string));
-    
-            var flagParameter = flag != null ?
-                new ObjectParameter("Flag", flag) :
-                new ObjectParameter("Flag", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TranslationUpdate_Result>("usp_TranslationUpdate", iDParameter, transNameParameter, shortNameParameter, flagParameter, activeParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_UsersCopy(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_UsersCopy", iDParameter);
-        }
-    
-        public virtual int usp_UsersDelete(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UsersDelete", iDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_UsersInsert(string username, string password, Nullable<bool> active)
-        {
-            var usernameParameter = username != null ?
-                new ObjectParameter("Username", username) :
-                new ObjectParameter("Username", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_UsersInsert", usernameParameter, passwordParameter, activeParameter);
-        }
-    
-        public virtual ObjectResult<string> usp_UsersOldPasswordSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_UsersOldPasswordSelect", iDParameter);
-        }
-    
-        public virtual int usp_UsersRemove(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UsersRemove", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_UsersSelect_Result> usp_UsersSelect(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UsersSelect_Result>("usp_UsersSelect", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_UsersSelectAll_Result> usp_UsersSelectAll(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UsersSelectAll_Result>("usp_UsersSelectAll", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_UsersSelectLogin_Result> usp_UsersSelectLogin(string username, string password)
-        {
-            var usernameParameter = username != null ?
-                new ObjectParameter("Username", username) :
-                new ObjectParameter("Username", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UsersSelectLogin_Result>("usp_UsersSelectLogin", usernameParameter, passwordParameter);
-        }
-    
-        public virtual ObjectResult<usp_UsersSelectTop_Result> usp_UsersSelectTop(Nullable<int> iD, Nullable<int> top)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var topParameter = top.HasValue ?
-                new ObjectParameter("Top", top) :
-                new ObjectParameter("Top", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UsersSelectTop_Result>("usp_UsersSelectTop", iDParameter, topParameter);
-        }
-    
-        public virtual ObjectResult<usp_UsersUpdate_Result> usp_UsersUpdate(Nullable<int> iD, string username, string password, Nullable<bool> active)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            var usernameParameter = username != null ?
-                new ObjectParameter("Username", username) :
-                new ObjectParameter("Username", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("Active", active) :
-                new ObjectParameter("Active", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_UsersUpdate_Result>("usp_UsersUpdate", iDParameter, usernameParameter, passwordParameter, activeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ContentUpdate_Result>("usp_ContentUpdate", iDParameter, catIDParameter, titleParameter, shortTextParameter, descriptionParameter, activeParameter);
         }
     }
 }

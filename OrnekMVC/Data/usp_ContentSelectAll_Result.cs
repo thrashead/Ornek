@@ -14,11 +14,10 @@ namespace OrnekMVC.Data
     public partial class usp_ContentSelectAll_Result
     {
         public int ID { get; set; }
+        public Nullable<int> CatID { get; set; }
         public string Title { get; set; }
-        public string Url { get; set; }
-        public string Code { get; set; }
+        public string ShortText { get; set; }
+        public string Description { get; set; }
         public bool Active { get; set; }
-        public bool Deleted { get; set; }
-        public string Guid { get; set; }
     }
 }

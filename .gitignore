@@ -21,6 +21,7 @@
 */jquery.dataTables.min.js
 */matrix*.*
 */jquery*/*
+*/jquery*
 *.ico
 */src/index.html
 */src/main.ts

@@ -76,20 +76,6 @@ export class AdminContentIndexComponent implements OnInit, OnDestroy {
 							let id: string = $("a.dlt-yes").attr("data-id");
 							this.onDelete(id);
 						});
-
-					$(document)
-						.off("click", "a.rmvLink")
-						.on("click", "a.rmvLink", function () {
-							$(this).addClass("active-rmv");
-							$("a.rmv-yes").attr("data-id", $(this).attr("data-id"));
-						});
-
-					$(document)
-						.off("click", "a.rmv-yes")
-						.on("click", "a.rmv-yes", () => {
-							let id: string = $("a.rmv-yes").attr("data-id");
-							this.onRemove(id);
-						});
 				}, 1);
 			}, resError => this.errorMsg = resError, () => { this.subscription.unsubscribe(); });
 		}
@@ -132,21 +118,6 @@ export class AdminContentIndexComponent implements OnInit, OnDestroy {
 			}
 			else {
 				this.ShowAlert("DeleteNot");
-			}
-		}, resError => this.errorMsg = resError, () => { this.subscription.unsubscribe(); });
-	}
-
-	onRemove(id) {
-		this.subscription = this.service.getRemove(id).subscribe((answer) => {
-			if (answer == true) {
-				this.ShowAlert("Remove");
-
-				$("a.rmvLink.active-rmv").parent("li").parent("ul").parent("div").parent("td").parent("tr").fadeOut("slow", function () {
-					$(this).remove();
-				});
-			}
-			else {
-				this.ShowAlert("RemoveNot");
 			}
 		}, resError => this.errorMsg = resError, () => { this.subscription.unsubscribe(); });
 	}

@@ -16,7 +16,7 @@ export class AdminLayoutComponent {
 	ngOnInit() {
 		this.service.getLoginControl().subscribe((answer) => {
 			if (answer == false) {
-				this.router.navigate(['/Admin']);
+				this.router.navigate(['/Admin/Login']);
 			}
 		}, resError => this.errorMsg = resError);
 	}

@@ -6,6 +6,17 @@
 		<form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
 			<fieldset>
 				<div class="editor-label">
+					Bağlı Category
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<select id="CatID" [ngModel]="model?.CatID" formControlName="CatID"><option *ngFor="let item of model?.CategoryList" selected="{{ item?.Selected ? 'selected' : '' }}" value="{{ item?.Value }}">{{ item?.Text }}</option></select>
+					<br />
+					<!-- CatID -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
 					Title
 				</div>
 				<div class="clear"></div>
@@ -17,13 +28,24 @@
 				<div class="clear"></div>
 
 				<div class="editor-label">
-					Code
+					ShortText
 				</div>
 				<div class="clear"></div>
 				<div class="editor-field">
-					<input id="Code" [ngModel]="model?.Code" formControlName="Code" type="text" />
+					<input id="ShortText" [ngModel]="model?.ShortText" formControlName="ShortText" type="text" />
 					<br />
-					<!-- Code -->
+					<!-- ShortText -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
+					Description
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<textarea id="Description" [ngModel]="model?.Description" formControlName="Description"></textarea>
+					<br />
+					<!-- Description -->
 				</div>
 				<div class="clear"></div>
 

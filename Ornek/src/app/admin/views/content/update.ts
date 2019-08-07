@@ -1,10 +1,9 @@
 ﻿import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 import { ContentService } from "../../services/content";
-import { ContentTService } from '../../services/contentt';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import * as $ from "jquery";
+import ClassicEditor from "../../../../../Content/admin/js/ckeditor/ckeditor.js";
 
 @Component({
 	templateUrl: './update.html'
@@ -23,7 +22,7 @@ export class AdminContentUpdateComponent {
 
 	private subscription: Subscription = new Subscription();
 
-	constructor(private service: ContentService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private serviceContentT: ContentTService) {
+	constructor(private service: ContentService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
@@ -32,10 +31,22 @@ export class AdminContentUpdateComponent {
 		this.callTable = true;
 		this.FillData();
 
+		setTimeout(function () {
+			ClassicEditor
+				.create(document.querySelector('#Description'), {
+				})
+				.then(editor => {
+					console.log(editor);
+				});
+
+		}, 1000);
+
 		this.updateForm = this.formBuilder.group({
 			ID: new FormControl(null, [Validators.required, Validators.min(0)]),
+			CatID: new FormControl(null),
 			Title: new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]),
-			Code: new FormControl(null),
+			ShortText: new FormControl(null),
+			Description: new FormControl(null),
 			Active: new FormControl(null),
 		});
 	}
@@ -47,80 +58,9 @@ export class AdminContentUpdateComponent {
 				this.subscription = this.service.getUpdate(this.id).subscribe((answer) => {
 					this.model = answer;
 					this.callTable = false;
-
-					setTimeout(() => {
-						$(".data-table").dataTable({
-							"bJQueryUI": true,
-							"sPaginationType": "full_numbers",
-							"sDom": '<""l>t<"F"fp>'
-						});
-
-						if ($(".dropdown-menu").first().find("a").length <= 0) {
-							$(".btn-group").remove();
-						}
-
-						$(document)
-							.off("click", ".fg-button")
-							.on("click", ".fg-button", () => {
-								setTimeout(() => {
-									this.FillData();
-								}, 1);
-							});
-
-						$(document)
-							.off("click", "a.cpyLink")
-							.on("click", "a.cpyLink", function () {
-								$(this).addClass("active-cpy");
-								$("a.cpy-yes").attr("data-id", $(this).attr("data-id"));
-								$("a.cpy-yes").attr("data-link", $(this).attr("data-controller"));
-							});
-
-						$(document)
-							.off("click", "a.dltLink")
-							.on("click", "a.dltLink", function () {
-								$(this).addClass("active-dlt");
-								$("a.dlt-yes").attr("data-id", $(this).attr("data-id"));
-								$("a.dlt-yes").attr("data-link", $(this).attr("data-controller"));
-							});
-
-						$(document)
-							.off("click", "a.cpy-yes[data-link='ContentT']")
-							.on("click", "a.cpy-yes[data-link='ContentT']", () => {
-								let id: string = $("a.cpy-yes").attr("data-id");
-								this.onContentTCopy(id);
-							});
-
-						$(document)
-							.off("click", "a.dlt-yes[data-link='ContentT']")
-							.on("click", "a.dlt-yes[data-link='ContentT']", () => {
-								let id: string = $("a.dlt-yes").attr("data-id");
-								this.onContentTDelete(id);
-							});
-
-						$(document)
-							.off("click", "a.rmvLink")
-							.on("click", "a.rmvLink", function () {
-								$(this).addClass("active-rmv");
-								$("a.rmv-yes").attr("data-id", $(this).attr("data-id"));
-								$("a.rmv-yes").attr("data-link", $(this).attr("data-controller"));
-							});
-
-						$(document)
-							.off("click", "a.rmv-yes[data-link='ContentT']")
-							.on("click", "a.rmv-yes[data-link='ContentT']", () => {
-								let id: string = $("a.rmv-yes").attr("data-id");
-								this.onContentTRemove(id);
-							});
-					}, 1);
 				}, resError => this.errorMsg = resError, () => { this.subscription.unsubscribe(); });
 			});
 		}
-
-		setTimeout(() => {
-			if ($(".dropdown-menu").first().find("a").length <= 0) {
-				$(".btn-group").remove();
-			}
-		}, 1);
 	}
 
 	ngOnDestroy(): void {
@@ -129,8 +69,10 @@ export class AdminContentUpdateComponent {
 
 	onSubmit() {
 		this.data.ID = this.updateForm.get("ID").value;
+		this.data.CatID = this.updateForm.get("CatID").value;
 		this.data.Title = this.updateForm.get("Title").value;
-		this.data.Code = this.updateForm.get("Code").value;
+		this.data.ShortText = this.updateForm.get("ShortText").value;
+		this.data.Description = $(".ck-content").html().replace("<p>", "").replace("</p>", "");
 		this.data.Active = this.updateForm.get("Active").value;
 
 		this.service.postUpdate(this.data)
@@ -144,54 +86,6 @@ export class AdminContentUpdateComponent {
 				}
 			},
 				resError => this.errorMsg = resError);
-	}
-
-	onContentTCopy(id) {
-		this.subscription = this.serviceContentT.getCopy(id).subscribe((answer) => {
-			$("a.cpyLink.active-cpy").removeClass("active-cpy");
-
-			if (answer == true) {
-				this.ShowAlert("Copy");
-
-				let currentUrl = this.router.url;
-				this.router.navigate(['/'], { skipLocationChange: true }).then(() => { this.router.navigate([currentUrl]) });
-			}
-			else {
-				this.ShowAlert("CopyNot");
-			}
-		}, resError => this.errorMsg = resError, () => { this.subscription.unsubscribe(); });
-	}
-
-	onContentTDelete(id) {
-		this.subscription = this.serviceContentT.getDelete(id).subscribe((answer) => {
-			if (answer == true) {
-				this.ShowAlert("Delete");
-
-				$("a.dltLink.active-dlt").parent("li").parent("ul").parent("div").parent("td").parent("tr").fadeOut("slow", function () {
-					$(this).remove();
-				});
-			}
-			else {
-				this.ShowAlert("DeleteNot");
-			}
-		}, resError => this.errorMsg = resError,
-			() => { this.subscription.unsubscribe(); });
-	}
-
-	onContentTRemove(id) {
-		this.subscription = this.serviceContentT.getRemove(id).subscribe((answer) => {
-			if (answer == true) {
-				this.ShowAlert("Remove");
-
-				$("a.rmvLink.active-rmv").parent("li").parent("ul").parent("div").parent("td").parent("tr").fadeOut("slow", function () {
-					$(this).remove();
-				});
-			}
-			else {
-				this.ShowAlert("RemoveNot");
-			}
-		}, resError => this.errorMsg = resError,
-			() => { this.subscription.unsubscribe(); });
 	}
 
 	ShowAlert(type: string) {

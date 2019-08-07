@@ -9,6 +9,17 @@
 					<input id="ID" [ngModel]="model?.ID" formControlName="ID" type="hidden" value="{{ model?.ID }}" />
 				</div>
 				<div class="editor-label">
+					Bağlı Category
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<select id="CatID" [ngModel]="model?.CatID" formControlName="CatID"><option *ngFor="let item of model?.CategoryList" selected="{{ item?.Selected ? 'selected' : '' }}" value="{{ item?.Value }}">{{ item?.Text }}</option></select>
+					<br />
+					<!-- CatID -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
 					Title
 				</div>
 				<div class="clear"></div>
@@ -20,13 +31,24 @@
 				<div class="clear"></div>
 
 				<div class="editor-label">
-					Code
+					ShortText
 				</div>
 				<div class="clear"></div>
 				<div class="editor-field">
-					<input id="Code" [ngModel]="model?.Code" formControlName="Code" type="text" value="{{ model?.Code }}" />
+					<input id="ShortText" [ngModel]="model?.ShortText" formControlName="ShortText" type="text" value="{{ model?.ShortText }}" />
 					<br />
-					<!-- Code -->
+					<!-- ShortText -->
+				</div>
+				<div class="clear"></div>
+
+				<div class="editor-label">
+					Description
+				</div>
+				<div class="clear"></div>
+				<div class="editor-field">
+					<textarea id="Description" [ngModel]="model?.Description" formControlName="Description">{{ model?.Description }}</textarea>
+					<br />
+					<!-- Description -->
 				</div>
 				<div class="clear"></div>
 
@@ -51,50 +73,5 @@
 					<a routerLink="/Admin/Content" class="btn btn-danger btn-cancel">İptal</a>
 			</fieldset>
 		</form>
-
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="widget-box">
-					<div class="widget-title">
-						<span class="icon"><i class="icon-home"></i></span>
-						<h5>Bağlı ContentT</h5>
-					</div>
-					<div class="widget-content nopadding">
-						<table class="table table-bordered data-table">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>ContentName</th>
-									<th>İşlem</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr *ngFor="let item of model?.ContentTList">
-									<td>{{ item?.ID }}</td>
-									<td>{{ item?.ContentName }}</td>
-									<td style="text-align:center;">
-										<div class="btn-group" style="text-align:left;">
-											<button data-toggle="dropdown" class="btn btn-mini btn-primary dropdown-toggle">İşlem <span class="caret"></span></button>
-											<ul class="dropdown-menu">
-												<li><a class="updLink" [routerLink]="['/Admin/ContentT/Update/' + item?.ID]">Düzenle</a></li>
-												<li><a class="cpyLink" href="#cpyData" data-toggle="modal" data-controller="ContentT" [attr.data-id]="item?.ID">Kopyala</a></li>
-												<li><a class="rmvLink" href="#rmvData" data-toggle="modal" data-controller="ContentT" [attr.data-id]="item?.ID">Kaldır</a></li>
-												<li><a class="dltLink" href="#dltData" data-toggle="modal" data-controller="ContentT" [attr.data-id]="item?.ID">Sil</a></li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="pagelinks">
-			<a routerLink="/Admin/ContentT/Insert" class="btn btn-primary btn-add">ContentT Ekle</a>
-		</div>
 	</div>
 </div>
-
-<admin-copydelete></admin-copydelete>
