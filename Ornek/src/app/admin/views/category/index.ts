@@ -99,7 +99,7 @@ export class AdminCategoryIndexComponent implements OnInit, OnDestroy {
 				this.ShowAlert("Copy");
 
 				let currentUrl = this.router.url;
-				this.router.navigate(['/'], { skipLocationChange: true }).then(() => { this.router.navigate([currentUrl]) });
+				this.router.navigate(['/Ornek/'], { skipLocationChange: true }).then(() => { this.router.navigate([currentUrl]) });
 			}
 			else {
 				this.ShowAlert("CopyNot");

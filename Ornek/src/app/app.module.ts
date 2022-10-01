@@ -65,7 +65,7 @@ import { ContentService } from './admin/services/content';
 		HttpClientModule
 	],
 	//'/Ornek/' -> '/' Bu şekilde değişecek
-    providers: [{ provide: APP_BASE_HREF, useValue: '/Ornek/' },
+	providers: [{ provide: APP_BASE_HREF, useValue: '/Ornek/' },
 		SharedService,
 		CategoryService,
 		ContentService
